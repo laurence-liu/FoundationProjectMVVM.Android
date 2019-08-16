@@ -29,13 +29,8 @@ class DetailViewModel(login: String) : ViewModel() {
     }
 
     private fun getGitHubUserDetail() {
-        Timber.i("OKOKOKOKOKGOOGLE")
-        Timber.i(login.value.toString())
-
         coroutineScope.launch {
             val githubUserDetailDeferred = GitHubApi.retrofitService.getGitHubUserDetail(login.value.toString())
-
-            Timber.i(login.toString())
 
             try {
                 val githubUserDetailResponse = githubUserDetailDeferred.await()
