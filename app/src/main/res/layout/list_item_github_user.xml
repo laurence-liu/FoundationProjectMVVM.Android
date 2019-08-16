@@ -7,11 +7,16 @@
         <variable
             name="githubUser"
             type="liuuu.laurence.foundationprojectmvvmandroid.model.GitHubUser" />
+
+        <variable
+            name="clickListener"
+            type="liuuu.laurence.foundationprojectmvvmandroid.github.GitHubClickListener" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="100dp"
+        android:onClick="@{() -> clickListener.onClick(githubUser)}">
 
         <TextView
             android:id="@+id/name_text_view"

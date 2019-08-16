@@ -1,6 +1,5 @@
 package liuuu.laurence.foundationprojectmvvmandroid.github
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +7,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import liuuu.laurence.foundationprojectmvvmandroid.Event
+import liuuu.laurence.foundationprojectmvvmandroid.SingleLiveEvent
 import liuuu.laurence.foundationprojectmvvmandroid.model.GitHubUser
 import liuuu.laurence.foundationprojectmvvmandroid.network.GitHubApi
 import java.lang.Exception
@@ -17,8 +18,11 @@ class GitHubViewModel : ViewModel() {
     val githubUserList: LiveData<List<GitHubUser>>
         get() = _githubUserList
 
-    var viewModelJob = Job()
+    private val _navigateToGitHubUserDetail = SingleLiveEvent<Event<String>>()
+    val navigateToGitHubUserDetail: LiveData<Event<String>>
+        get() = _navigateToGitHubUserDetail
 
+    var viewModelJob = Job()
     val coroutineScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     init {
@@ -39,6 +43,10 @@ class GitHubViewModel : ViewModel() {
                 e.printStackTrace()
             }
         }
+    }
+
+    fun onGitHubUserClicked(login: String) {
+        _navigateToGitHubUserDetail.value = Event(login)
     }
 
     override fun onCleared() {
