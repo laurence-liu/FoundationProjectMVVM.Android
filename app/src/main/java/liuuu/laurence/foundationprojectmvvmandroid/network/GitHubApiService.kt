@@ -3,6 +3,7 @@ package liuuu.laurence.foundationprojectmvvmandroid.network
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlinx.coroutines.Deferred
 import liuuu.laurence.foundationprojectmvvmandroid.model.GitHubUser
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -24,7 +25,7 @@ private val retrofit = Retrofit.Builder()
 
 interface GitHubApiService {
     @GET("users")
-    fun getGitHubUser(@Query("since") since: Int): Call<List<GitHubUser>>
+    fun getGitHubUser(@Query("since") since: Int): Deferred<List<GitHubUser>>
 }
 
 object GitHubApi {
