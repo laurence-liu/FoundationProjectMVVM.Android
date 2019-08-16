@@ -1,4 +1,4 @@
-package liuuu.laurence.foundationprojectmvvmandroid
+package liuuu.laurence.foundationprojectmvvmandroid.github
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import liuuu.laurence.foundationprojectmvvmandroid.databinding.FragmentGithubBinding
-import liuuu.laurence.foundationprojectmvvmandroid.github.GitHubClickListener
-import liuuu.laurence.foundationprojectmvvmandroid.github.GitHubUserAdapter
-import liuuu.laurence.foundationprojectmvvmandroid.github.GitHubViewModel
-import liuuu.laurence.foundationprojectmvvmandroid.github.GitHubViewModelFactory
-import timber.log.Timber
 
 class GitHubFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -42,7 +38,7 @@ class GitHubFragment : Fragment() {
 
         githubViewMode.navigateToGitHubUserDetail.observe(this, Observer {
             it.getContentIfNotHandled()?.let {
-                Timber.i(it)
+                this.findNavController().navigate(GitHubFragmentDirections.actionShowDetail(it))
             }
         })
 

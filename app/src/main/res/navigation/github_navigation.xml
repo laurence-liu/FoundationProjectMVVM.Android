@@ -23,6 +23,16 @@
     <fragment
         tools:layout="@layout/fragment_github"
         android:id="@+id/github"
-        android:name="liuuu.laurence.foundationprojectmvvmandroid.GitHubFragment"
-        android:label="@string/github" />
+        android:name="liuuu.laurence.foundationprojectmvvmandroid.github.GitHubFragment"
+        android:label="@string/github" >
+        <action
+            android:id="@+id/action_showDetail"
+            app:destination="@id/detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/detail"
+        android:name="liuuu.laurence.foundationprojectmvvmandroid.detail.DetailFragment"
+        android:label="@string/detail" >
+        <argument android:name="login" app:argType="string"/>
+    </fragment>
 </navigation>
