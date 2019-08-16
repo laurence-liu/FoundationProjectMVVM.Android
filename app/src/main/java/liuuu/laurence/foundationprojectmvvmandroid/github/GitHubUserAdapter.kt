@@ -25,8 +25,6 @@ class GitHubUserAdapter() :
 
         fun bind(item: GitHubUser) {
             binding.githubUser = item
-            binding.nameTextView.text = item.login
-            binding.typeTextView.text = item.type
             binding.executePendingBindings()
         }
 

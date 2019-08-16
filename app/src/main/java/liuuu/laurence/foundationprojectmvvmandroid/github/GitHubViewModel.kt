@@ -31,6 +31,9 @@ class GitHubViewModel : ViewModel() {
 
             try {
                 val gitHubResponse = gitHubDeferred.await()
+//                _githubUserList.value = gitHubResponse.filter {
+//                    it.login[0] > 'v'
+//                }
                 _githubUserList.value = gitHubResponse
             } catch (e: Exception) {
                 e.printStackTrace()

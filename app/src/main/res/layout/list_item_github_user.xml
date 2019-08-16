@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="githubUser"
             type="liuuu.laurence.foundationprojectmvvmandroid.model.GitHubUser" />
@@ -17,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="OK Google"
+            android:text="@{githubUser.login}"
             android:textSize="23dp" />
 
         <TextView
@@ -27,7 +29,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
-            android:text="TextView"
+            android:text="@{githubUser.type}"
             android:textSize="23dp" />
 
         <ImageView
@@ -36,6 +38,7 @@
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="20dp" />
+            android:layout_marginEnd="20dp"
+            app:githubUserImage="@{githubUser.avatarUrl}" />
     </RelativeLayout>
 </layout>
