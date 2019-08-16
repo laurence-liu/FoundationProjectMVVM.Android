@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 
 class SplashFragment : Fragment() {
@@ -24,7 +25,13 @@ class SplashFragment : Fragment() {
             }
 
             override fun onFinish() {
-                findNavController().navigate(R.id.github, null)
+                findNavController()
+                    .navigate(R.id.github,
+                        null,
+                        NavOptions.Builder()
+                            .setPopUpTo(R.id.splash,
+                                true).build()
+                    )
             }
         }
         timer.start()
