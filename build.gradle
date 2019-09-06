@@ -17,6 +17,7 @@ buildscript {
         version_picasso = "2.71828"
         version_room = "2.1.0"
         version_paging = "2.1.0"
+        version_koin = '2.0.1'
     }
 
     repositories {
