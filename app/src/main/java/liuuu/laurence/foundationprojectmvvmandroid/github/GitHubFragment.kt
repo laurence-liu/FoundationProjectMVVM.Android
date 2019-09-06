@@ -10,17 +10,21 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import liuuu.laurence.foundationprojectmvvmandroid.databinding.FragmentGithubBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GitHubFragment : Fragment() {
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         (activity as AppCompatActivity).supportActionBar?.show()
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         val binding = FragmentGithubBinding.inflate(inflater)
 
-        val viewModelFactory = GitHubViewModelFactory()
+        val githubViewMode: GitHubViewModel by viewModel()
 
-        val githubViewMode = ViewModelProviders.of(this, viewModelFactory).get(GitHubViewModel::class.java)
+//        val viewModelFactory = GitHubViewModelFactory()
+
+//        val githubViewMode = ViewModelProviders.of(this, viewModelFactory).get(GitHubViewModel::class.java)
 
         binding.lifecycleOwner = this
 
